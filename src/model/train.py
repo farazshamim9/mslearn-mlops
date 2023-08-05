@@ -5,7 +5,7 @@ import glob
 import os
 import logging
 import sys
-from autologging import logged, TRACE, traced
+from autologging import TRACE
 import pandas as pd
 
 from sklearn.linear_model import LogisticRegression
@@ -15,15 +15,20 @@ from sklearn.model_selection import train_test_split
 # define functions
 def main(args):
     # TO DO: enable autologging
-    logging.basicConfig(level=TRACE, stream=sys.stderr,format="%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s")
+    logging.basicConfig(level=TRACE, stream=sys.stderr,
+                        format="%(levelname)s:%(filename)s," +
+                        "%(lineno)d:%(name)s.%(funcName)s:%(message)s")
 
     # read data
+    logging.info("reading data")
     df = get_csvs_df(args.training_data)
 
     # split data
+    logging.info("splitting data")
     X_train, X_test, y_train, y_test = split_data(df)
 
     # train model
+    logging.info("training modek")
     train_model(args.reg_rate, X_train, X_test, y_train, y_test)
 
 
@@ -38,9 +43,9 @@ def get_csvs_df(path):
 
 # TO DO: add function to split data
 def split_data(df):
-    x = df.loc[:,df.columns != "Diabetic"]
+    x = df.loc[:, df.columns != "Diabetic"]
     y = df["Diabetic"]
-    train_test_split(x, y)
+    return train_test_split(x, y)
 
 
 def train_model(reg_rate, X_train, X_test, y_train, y_test):
@@ -63,6 +68,7 @@ def parse_args():
 
     # return args
     return args
+
 
 # run script
 if __name__ == "__main__":
