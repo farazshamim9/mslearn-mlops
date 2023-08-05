@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 def main(args):
     # TO DO: enable autologging
     logging.basicConfig(level=TRACE, stream=sys.stderr,
-                        format = "%(levelname)s:%(filename)s," +
+                        format="%(levelname)s:%(filename)s," +
                         "%(lineno)d:%(name)s.%(funcName)s:%(message)s")
 
     # read data
