@@ -5,7 +5,7 @@ import glob
 import os
 import logging
 import sys
-from autologging import logged, TRACE, traced
+from autologging import TRACE
 import pandas as pd
 
 from sklearn.linear_model import LogisticRegression
@@ -15,7 +15,8 @@ from sklearn.model_selection import train_test_split
 # define functions
 def main(args):
     # TO DO: enable autologging
-    logging.basicConfig(level=TRACE, stream=sys.stderr,format="%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s")
+    logging.basicConfig(level=TRACE, stream=sys.stderr,
+                        format="%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s")
 
     # read data
     df = get_csvs_df(args.training_data)
@@ -63,6 +64,7 @@ def parse_args():
 
     # return args
     return args
+
 
 # run script
 if __name__ == "__main__":
