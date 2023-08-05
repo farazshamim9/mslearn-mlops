@@ -16,7 +16,8 @@ from sklearn.model_selection import train_test_split
 def main(args):
     # TO DO: enable autologging
     logging.basicConfig(level=TRACE, stream=sys.stderr,
-                        format="%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s")
+                        format="%(levelname)s:%(filename)s,"+
+                        "%(lineno)d:%(name)s.%(funcName)s:%(message)s")
 
     # read data
     logging.info("reading data")
@@ -42,7 +43,7 @@ def get_csvs_df(path):
 
 # TO DO: add function to split data
 def split_data(df):
-    x = df.loc[:,df.columns != "Diabetic"]
+    x = df.loc[:, df.columns != "Diabetic"]
     y = df["Diabetic"]
     return train_test_split(x, y)
 
