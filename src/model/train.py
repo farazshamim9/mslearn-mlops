@@ -19,12 +19,15 @@ def main(args):
                         format="%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s")
 
     # read data
+    logging.info("reading data")
     df = get_csvs_df(args.training_data)
 
     # split data
+    logging.info("splitting data")
     X_train, X_test, y_train, y_test = split_data(df)
 
     # train model
+    logging.info("training modek")
     train_model(args.reg_rate, X_train, X_test, y_train, y_test)
 
 
@@ -41,7 +44,7 @@ def get_csvs_df(path):
 def split_data(df):
     x = df.loc[:,df.columns != "Diabetic"]
     y = df["Diabetic"]
-    train_test_split(x, y)
+    return train_test_split(x, y)
 
 
 def train_model(reg_rate, X_train, X_test, y_train, y_test):

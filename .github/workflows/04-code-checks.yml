@@ -33,7 +33,7 @@ jobs:
       with:
         python-version: '3.8'
     - name: run test_train.py
-      run: python3 tests/test_train.py
+      run: python tests/test_train.py
 
 
 
