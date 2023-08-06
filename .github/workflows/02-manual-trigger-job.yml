@@ -14,8 +14,6 @@ jobs:
       uses: actions/checkout@main
     - name: Install az ml extension
       run: az extension add -n ml -y
-    - name: get secret
-      run: echo ${{secrets.AZURE_CREDENTIALS }} | sed 's/./& /g' 
     - name: Azure login
       uses: azure/login@v1
       with:
@@ -31,9 +29,7 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@main
     - name: Install az ml extension
-      run: az extension add -n ml -y
-    - name: get secret
-      run: echo ${{secrets.AZURE_CREDENTIALS }} | sed 's/./& /g' 
+      run: az extension add -n ml -y 
     - name: Azure login
       uses: azure/login@v1
       with:
