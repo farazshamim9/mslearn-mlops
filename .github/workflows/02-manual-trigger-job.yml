@@ -17,8 +17,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: install autologging
-      run : pip install autologging
+    - name: set current directory
+      run: cd src
     - name: Execute training job
-      run: az ml job create --file src/job.yml --resource-group mlops-training --workspace-name mlops-1
+      run: az ml job create --file src/job.yml --resource-group mlops-training --workspace-name mlops-2
 
